@@ -1,0 +1,15 @@
+.container{
+  display: flex;
+}
+
+.child_1{
+  flex: 1;
+}
+
+.justify_center{
+  justify-content: center;
+}
+
+.self_center{
+  align-self: center;
+}

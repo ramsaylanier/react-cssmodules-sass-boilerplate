@@ -1,0 +1,10 @@
+.base{
+	composes: container from '../../styles/flexbox.scss';
+	position: relative;
+	min-height: 100vh;
+	background-color: darken(white, 10%);
+	background-size: cover;
+	background-position: center center;
+	opacity: 0;
+	transition: opacity 300ms ease-out;
+}
