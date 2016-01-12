@@ -1,5 +1,4 @@
 import React from 'react';
-import Relay from 'react-relay';
 
 import CSSModules from 'react-css-modules';
 import styles from './section.scss';

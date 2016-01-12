@@ -26,7 +26,6 @@ module.exports = {
           presets: ['react', 'es2015', 'stage-0'],
           cacheDirectory: true,
           plugins: [
-            './build/babelRelayPlugin',
             'transform-react-display-name',
             'transform-runtime',
             'transform-decorators-legacy',

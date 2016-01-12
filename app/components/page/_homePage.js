@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Link } from 'react-router';
-import { Page } from '../Page/page.js';
+import Page from './page.js';
 import Section from '../sections/section.js';
 
 class HomePage extends React.Component{
@@ -12,7 +12,7 @@ class HomePage extends React.Component{
 				<Section title="Ramsay" type="primary">
 
 				</Section>
-				<Section title="Work" type="secondary">
+				<Section title="Work" type="secondary" backgroundImage="/images/work_bg.jpg">
 
 				</Section>
 				<Section title="Play" type="dark">

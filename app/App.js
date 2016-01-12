@@ -8,7 +8,7 @@ import styles from './App.scss';
 class App extends React.Component {
 
   render() {
-    const { viewer, children } = this.props;
+    const { children } = this.props;
 
     return (
       <div className="application">
