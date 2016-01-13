@@ -1,16 +1,16 @@
-# webpack-react-cssmodules-boilerplate
-A boilerplate for running a Webpack workflow in Node express using React with React CSS Modules (using SASS)
+# Wordpress Express
+This project is my attempt at using Node.js and Express to consume data from a Wordpress database using GraphQL and Relay and React and...other stuff.
 
-Please read [The ultimate Webpack setup](http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup) to know more about this boilerplate.
-Also, read [About React CSS Modules](https://github.com/gajus/react-css-modules).
+It's built using Webpack, and requires Node V 5.0.0. You might be able to get away with 4.0, but really just tighten up and use 5.0. 
+
+You should also read about [why I am doing this](https://medium.com/@verybadhello/wordpress-with-node-react-and-graphql-part-1-introduction-ee0fc491730e#.4e1pvhq67). 
 
 ## Major update to project
 Inspired by [this project](https://github.com/vesparny/react-kickstart) and the evolving of [react-transform](https://github.com/gaearon/react-transform-boilerplate) and [CSS Modules]((http://glenmaddern.com/articles/css-modules)), this project has gotten a major upgrade.
 
-**NOTE!** Use the latest version of Node, 5.x.x.
 
 ## Get Started
-Just run ```npm start```
+Just run ```npm install``` and then ```npm start```
 
 ### React by default
 The project runs with React by default and hot replacement of changes to the modules.
