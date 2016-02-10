@@ -3,47 +3,40 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const devServer = {
+    contentBase: path.resolve(__dirname, './app'),
+    outputPath: path.join(__dirname, './dist'),
+    colors: true,
+    quiet: false,
+    noInfo: false,
+    publicPath: '/',
+    historyApiFallback: false,
+    host: '127.0.0.1',
+    port: 3000,
+    hot: true
+};
 
 module.exports = {
   devtool: 'eval-source-map',
+  debug: true,
+  devServer: devServer,
   entry: [
+    'webpack/hot/dev-server',
     'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'app/main.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: devServer.publicPath
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         loader: 'babel',
         exclude: /node_modules|lib/,
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          cacheDirectory: true,
-          plugins: [
-            'transform-react-display-name',
-            'transform-runtime',
-            'transform-decorators-legacy',
-            ['react-transform', {
-              'transforms': [{
-                'transform': 'react-transform-hmr',
-                'imports': ['react'],
-                // this is important for Webpack HMR:
-                'locals': ['module']
-              }, {
-                'transform': 'react-transform-catch-errors',
-                // the second import is the React component to render error
-                // (it can be a local path too, like './src/ErrorReporter')
-                'imports': ['react', 'redbox-react']
-              }]
-            }]
-          ]
-        },
       },
       {
         test: /\.json?$/,
@@ -55,15 +48,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass'),
-        exclude: /node_modules|lib/,
+        loaders: [
+          'style?sourceMap',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]',
+          'sass?sourceMap'
+        ],
+        exclude: /node_modules|lib/
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin('app.css', {
-      allChunks: true
-    }),
     new HtmlWebpackPlugin({
       template: 'app/index.tpl.html',
       inject: 'body',
@@ -73,7 +67,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('dev')
     })
   ],
   node: {

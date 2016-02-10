@@ -1,5 +1,6 @@
 /* eslint no-console: 0 */
 import path from 'path';
+import browserSync from 'browser-sync';
 import express from 'express';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
@@ -7,10 +8,10 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config.js';
 
-let app;
-
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const APP_PORT = isDeveloping ? 3000 : process.env.PORT;
+const APP_PORT = isDeveloping ? 3000 : process.env.PORT || 3000;
+
+let app = express();
 
 if (isDeveloping) {
 
@@ -29,14 +30,14 @@ if (isDeveloping) {
       chunkModules: false,
       modules: false
     }
-  });
+   });
 
-  app.use(webpackHotMiddleware(compiler));
+   app.use(webpackHotMiddleware(compiler));
 
 } else {
-  app.use(express.static(__dirname + '/dist'));
-  app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  app.use(express.static('./dist'));
+  app.get('*', function response(req, res, next) {
+    res.sendFile(path.join(__dirname, '/index.html'));
   });
 }
 
