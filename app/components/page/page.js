@@ -13,6 +13,7 @@ import wrapperStyles from '../../styles/wrapper.scss';
 class Page extends React.Component{
 
 	componentDidMount(){
+		console.log('hello');
 		let animation = this.props.animation || PageAnimations.animateIn;
 		AnimateItem(this._page, PageAnimations.animateIn);
 	}

@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import { Router, browserHistory, IndexRoute, Route } from 'react-router';
 
 import App from './App.js';
-import HomePage from './components/Page/_homePage.js';
+import HomePage from './components/page/HomePage.js';
 
 
 render((

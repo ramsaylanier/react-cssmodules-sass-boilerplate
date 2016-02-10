@@ -8,8 +8,8 @@ class Section extends React.Component{
 
   _renderPostTitle(){
     const title = this.props.title.match(/.{1,2}/g);
-    return title.map( fragment => {
-      return <span>{fragment}<br></br></span>
+    return title.map( (fragment, index) => {
+      return <span key={index}>{fragment}<br></br></span>
     })
   }
 
